@@ -1,0 +1,2 @@
+(self.webpackChunkjava_swing_component_creator=self.webpackChunkjava_swing_component_creator||[]).push([[2509],{6813:function(e,a,s){"use strict";var n=s(5756),t=s(5376);function r(e){e.register(n),e.register(t);var a=e.util.clone(e.languages.typescript);e.languages.tsx=e.languages.extend("jsx",a)}e.exports=r,r.displayName="tsx",r.aliases=[]}}]);
+//# sourceMappingURL=react-syntax-highlighter_languages_refractor_tsx-969c59d70e2d92a06aaa.js.map

@@ -1,0 +1,2 @@
+(self.webpackChunkjava_swing_component_creator=self.webpackChunkjava_swing_component_creator||[]).push([[1438],{4703:function(a){"use strict";function e(a){a.languages.arff={comment:/%.*/,string:{pattern:/(["'])(?:\\.|(?!\1)[^\\\r\n])*\1/,greedy:!0},keyword:/@(?:attribute|data|end|relation)\b/i,number:/\b\d+(?:\.\d+)?\b/,punctuation:/[{},]/}}a.exports=e,e.displayName="arff",e.aliases=[]}}]);
+//# sourceMappingURL=react-syntax-highlighter_languages_refractor_arff-dcc6a2000464a26f1f75.js.map

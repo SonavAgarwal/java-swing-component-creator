@@ -1,0 +1,2 @@
+(self.webpackChunkjava_swing_component_creator=self.webpackChunkjava_swing_component_creator||[]).push([[6495],{37:function(t){"use strict";function n(t){t.languages.ini={comment:/^[ \t]*[;#].*$/m,selector:/^[ \t]*\[.*?\]/m,constant:/^[ \t]*[^\s=]+?(?=[ \t]*=)/m,"attr-value":{pattern:/=.*/,inside:{punctuation:/^[=]/}}}}t.exports=n,n.displayName="ini",n.aliases=[]}}]);
+//# sourceMappingURL=react-syntax-highlighter_languages_refractor_ini-cc33330ff2df9d5e7462.js.map
