@@ -1,0 +1,203 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+ol,
+ul {
+    list-style: none;
+}
+blockquote,
+q {
+    quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: "";
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+button {
+    border: none;
+    background-color: #eeeeee;
+    outline: none;
+    border-radius: 3vw;
+    font-size: 1.2vw;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 1vw;
+}
+
+button:hover {
+    border: none;
+    background-color: #dbdbdb;
+}
+
+button:active {
+    border: none;
+    background-color: #eeeeee;
+}
+
+.blueButton {
+    background-color: dodgerblue;
+}
+
+.blueButton:hover {
+    background-color: rgb(0, 109, 218);
+}
+
+.blueButton:active {
+    background-color: dodgerblue;
+}
+
+input {
+    border: none;
+    background-color: #eeeeee;
+    outline: none;
+    border-radius: 3vw;
+    padding-left: 1vw;
+    padding-right: 1vw;
+    font-size: 1.2vw;
+    /* font-weight: bold; */
+    /* text-transform: uppercase; */
+    box-sizing: border-box;
+    margin-bottom: 1vw;
+}
+
+.numberInput {
+    font-weight: bold;
+    text-align: center;
+}
+
+h2 {
+    font-size: 1vw;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 1vw;
+    /* text-align: center; */
+}
+
+input[type="range"] {
+    -webkit-appearance: none;
+    background-color: #eeeeee;
+    border: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    background-color: dodgerblue;
+    width: 1.5vw;
+    height: 1.5vw;
+    border-radius: 100%;
+}
