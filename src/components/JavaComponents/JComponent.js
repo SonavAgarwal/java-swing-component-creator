@@ -62,14 +62,16 @@ function JComponent(props) {
                         cursor: "grab",
                         border: props.jComponentClass.type === "label" ? "none" : "1px solid black",
                         display: "flex",
+                        flexDirection: "row",
                         justifyContent: "center",
                         alignItems: "center",
                         backgroundColor: props.jComponentClass.type === "button" ? "lightsteelblue" : "white",
                     }}>
                     <h1
                         style={{
-                            margin: 0,
-                            width: "calc(100% - 10px)",
+                            marginLeft: 1,
+                            marginRight: 1,
+                            width: "100%",
                             textTransform: "none",
                             textAlign: textAlignCSS[props.jComponentClass.textAlign],
                             fontFamily: "Arial",
@@ -78,6 +80,18 @@ function JComponent(props) {
                         }}>
                         {props.jComponentClass.text}
                     </h1>
+                    <div
+                        style={{
+                            width: props.jComponentClass.type === "comboBox" ? 30 : 0,
+                            backgroundColor: "lightsteelblue",
+                            height: "100%",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            overflow: "hidden",
+                        }}>
+                        <h1 style={{ fontWeight: "bolder" }}>▼</h1>
+                    </div>
                 </div>
             </div>
         </Draggable>

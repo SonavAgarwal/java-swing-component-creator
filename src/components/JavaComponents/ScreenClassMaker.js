@@ -45,11 +45,12 @@ export function makeComponentInitializations(components) {
 
         initString += `${element.variableName} = new ${getJavaClass(element.type)}();\n`;
         initString += `${element.variableName}.setFont(new Font("Arial", ${element.font.bolded ? "Font.BOLD" : "Font.PLAIN"}, ${element.font.size}));\n`;
-        initString += `${element.variableName}.setHorizontalAlignment(${getJavaTextAlignConstant(element.textAlign)});\n`;
+        if (element.type !== "comboBox") initString += `${element.variableName}.setHorizontalAlignment(${getJavaTextAlignConstant(element.textAlign)});\n`;
         initString += `${element.variableName}.setBounds(${element.x + 5}, ${element.y + 5}, ${element.width}, ${element.height});\n`;
-        initString += `${element.variableName}.setText("${element.text}");\n`;
+        if (element.type !== "comboBox") initString += `${element.variableName}.setText("${element.text}");\n`;
         initString += `this.add(${element.variableName});\n`;
         if (element.type === "button") initString += `${element.variableName}.addActionListener(this);\n`;
+        if (element.type == "comboBox") initString += `${element.variableName}.addItem("${element.text}"); // Remeber to add more options\n`;
         initString += `\n`;
 
         // componentInitializations.push(initString);

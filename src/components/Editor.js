@@ -133,10 +133,22 @@ function Editor(props) {
                     }}
                     value={frameComponents[selectedNumber].text}></input>
 
-                <h2>Text Alignment</h2>
+                <h2
+                    style={{
+                        height: frameComponents[selectedNumber].type !== "comboBox" ? null : 0,
+                        overflow: "hidden",
+                        marginBottom: frameComponents[selectedNumber].type !== "comboBox" ? null : 0,
+                    }}>
+                    Text Alignment
+                </h2>
                 <input
                     type='range'
-                    style={{ width: "100%", height: "3vw" }}
+                    style={{
+                        width: "100%",
+                        height: frameComponents[selectedNumber].type !== "comboBox" ? "3vw" : 0,
+                        overflow: "hidden",
+                        marginBottom: frameComponents[selectedNumber].type !== "comboBox" ? null : 0,
+                    }}
                     min={0}
                     max={2}
                     onChange={function (event) {
@@ -148,7 +160,7 @@ function Editor(props) {
                 <div style={{ width: "100%", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                     <input
                         type='number'
-                        style={{ width: "80%", height: "3vw", marginBottom: 0 }}
+                        style={{ width: "80%", height: "3vw" }}
                         onChange={function (event) {
                             frameComponents[selectedNumber].font.size = parseInt(event.target.value);
                             forceUpdate();
@@ -156,7 +168,7 @@ function Editor(props) {
                         value={frameComponents[selectedNumber].font.size}></input>
                     <input
                         type='checkbox'
-                        style={{ height: "2vw", width: "2vw", marginBottom: 0 }}
+                        style={{ height: "2vw", width: "2vw" }}
                         min={0}
                         max={2}
                         onChange={function (event) {
@@ -165,8 +177,40 @@ function Editor(props) {
                         }}
                         checked={frameComponents[selectedNumber].font.bolded}></input>
                 </div>
+                <button
+                    style={{ width: "100%", height: "3vw", marginBottom: "1vw" }}
+                    onClick={function () {
+                        duplicateSelectedJComponent();
+                        console.log(frameComponents);
+                        forceUpdate();
+                    }}>
+                    Duplicate
+                </button>
+                <button
+                    style={{ width: "100%", height: "3vw", marginBottom: "1vw" }}
+                    onClick={function () {
+                        frameComponents[selectedNumber].reset();
+                        forceUpdate();
+                    }}>
+                    Reset
+                </button>
+                <button
+                    style={{ width: "100%", height: "3vw" }}
+                    onClick={function () {
+                        setFrameComponents(frameComponents.filter((item, index) => index !== selectedNumber));
+                        releaseSelection();
+                    }}>
+                    Delete Component
+                </button>
             </div>
         );
+    }
+
+    function duplicateSelectedJComponent() {
+        let jComponentClass = frameComponents[selectedNumber];
+        let newJComponentClass = jComponentClass.copy(frameComponents.length);
+        setSelectedNumber(frameComponents.length);
+        frameComponents.push(newJComponentClass);
     }
 
     return (
@@ -248,10 +292,33 @@ function Editor(props) {
                     <button style={{ width: "100%", height: "3vw" }} onClick={() => addJComponent("label")}>
                         Add JLabel
                     </button>
+                    <button style={{ width: "100%", height: "3vw" }} onClick={() => addJComponent("comboBox")}>
+                        Add JComboBox
+                    </button>
                     {/* <JButton></JButton> */}
                     <button className='blueButton' style={{ width: "100%", height: "3vw" }} onClick={getCode}>
                         Get Code
                     </button>
+                </div>
+                <div
+                    style={{
+                        width: "100%",
+                        height: "2vh",
+                        display: "flex",
+                        alignSelf: "flex-end",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        marginTop: "auto",
+                        paddingBottom: "2vh",
+                        color: "lightgray",
+                    }}>
+                    <h1 style={{ color: "lightgray !important", fontSize: 10 }}>
+                        To report issues, contact{" "}
+                        <a style={{ color: "lightgray" }} href='mailto: me@sonavagarwal.com'>
+                            me
+                        </a>
+                        .
+                    </h1>
                 </div>
             </div>
             <CodeCopyModal show={showCode} closeFunction={() => setShowCode(false)} frameComponents={frameComponents}></CodeCopyModal>
@@ -262,15 +329,38 @@ function Editor(props) {
 class JComponentClass {
     constructor(type, indexCreated) {
         this.type = type;
-        this.x = 0;
-        this.y = 0;
+        this.indexCreated = indexCreated;
+        this.x = 0 + this.indexCreated * 10;
+        this.y = 0 + this.indexCreated * 10;
         this.width = getDefaultXDimension(this.type);
         this.height = getDefaultYDimension(this.type);
-        this.indexCreated = indexCreated;
         this.variableName = "component" + this.indexCreated;
         this.text = this.type;
         this.textAlign = getDefaultTextAlign(this.type);
         this.font = getDefaultFont(this.type);
+    }
+
+    reset() {
+        this.x = 0 + this.indexCreated * 10;
+        this.y = 0 + this.indexCreated * 10;
+        this.width = getDefaultXDimension(this.type);
+        this.height = getDefaultYDimension(this.type);
+        this.variableName = "component" + this.indexCreated;
+        this.text = this.type;
+        this.textAlign = getDefaultTextAlign(this.type);
+        this.font = getDefaultFont(this.type);
+    }
+
+    copy(newIndex) {
+        let newClass = new JComponentClass(this.type, newIndex);
+        newClass.x = this.x + 10;
+        newClass.y = this.y + 10;
+        newClass.width = this.width;
+        newClass.height = this.height;
+        newClass.text = this.text;
+        newClass.textAlign = this.textAlign;
+        newClass.font = this.font.copy();
+        return newClass;
     }
 }
 
