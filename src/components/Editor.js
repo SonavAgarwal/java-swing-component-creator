@@ -24,7 +24,8 @@ function Editor(props) {
     const componentCount = useRef(0);
 
     function addJComponent(type) {
-        let jComponentClass = new JComponentClass(type, frameComponents.length);
+        let jComponentClass = new JComponentClass(type, componentCount.current);
+        componentCount.current = componentCount.current + 1;
         setFrameComponents([...frameComponents, jComponentClass]);
     }
 
@@ -208,7 +209,8 @@ function Editor(props) {
 
     function duplicateSelectedJComponent() {
         let jComponentClass = frameComponents[selectedNumber];
-        let newJComponentClass = jComponentClass.copy(frameComponents.length);
+        let newJComponentClass = jComponentClass.copy(componentCount.current);
+        componentCount.current = componentCount.current + 1;
         setSelectedNumber(frameComponents.length);
         frameComponents.push(newJComponentClass);
     }
