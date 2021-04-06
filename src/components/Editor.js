@@ -315,7 +315,7 @@ function Editor(props) {
                         color: "lightgray",
                     }}>
                     <h1 style={{ color: "lightgray !important", fontSize: 10 }}>
-                        To report issues, contact{" "}
+                        v 1.5 | To report issues, contact{" "}
                         <a style={{ color: "lightgray" }} href='mailto: me@sonavagarwal.com'>
                             me
                         </a>
