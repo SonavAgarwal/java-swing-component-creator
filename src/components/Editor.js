@@ -24,6 +24,11 @@ function Editor(props) {
     const componentCount = useRef(0);
 
     function addJComponent(type) {
+        try {
+            typeof window !== "undefined" && window.gtag("event", "add-component", { component: type, duplicate: "false" });
+        } catch (e) {
+            console.log(e);
+        }
         let jComponentClass = new JComponentClass(type, componentCount.current);
         componentCount.current = componentCount.current + 1;
         setFrameComponents([...frameComponents, jComponentClass]);
@@ -44,6 +49,11 @@ function Editor(props) {
 
     function getCode() {
         // makeClassText(frameComponents);
+        try {
+            typeof window !== "undefined" && window.gtag("event", "generate-code");
+        } catch (e) {
+            console.log(e);
+        }
         setShowCode(true);
     }
 
@@ -213,6 +223,11 @@ function Editor(props) {
         componentCount.current = componentCount.current + 1;
         setSelectedNumber(frameComponents.length);
         frameComponents.push(newJComponentClass);
+        try {
+            typeof window !== "undefined" && window.gtag("event", "add-component", { component: newJComponentClass.type, duplicate: "true" });
+        } catch (e) {
+            console.log(e);
+        }
     }
 
     return (
@@ -310,17 +325,19 @@ function Editor(props) {
                         alignSelf: "flex-end",
                         alignItems: "center",
                         justifyContent: "center",
+                        flexDirection: "column",
                         marginTop: "auto",
                         paddingBottom: "2vh",
                         color: "lightgray",
                     }}>
-                    <h1 style={{ color: "lightgray !important", fontSize: 10 }}>
-                        v 1.5 | To report issues, contact{" "}
+                    <h1 style={{ color: "lightgray !important", fontSize: 10, marginBottom: 10 }}>
+                        v 1.6 | To report issues, contact{" "}
                         <a style={{ color: "lightgray" }} href='mailto: me@sonavagarwal.com'>
                             me
                         </a>
                         .
                     </h1>
+                    <h1 style={{ color: "lightgray !important", fontSize: 10 }}>Privacy policy: We use Google Analytics to track usage of this website.</h1>
                 </div>
             </div>
             <CodeCopyModal show={showCode} closeFunction={() => setShowCode(false)} frameComponents={frameComponents}></CodeCopyModal>
