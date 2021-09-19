@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkjava_swing_component_creator=self.webpackChunkjava_swing_component_creator||[]).push([[2509],{6813:function(e,a,s){var n=s(5756),t=s(5376);function r(e){e.register(n),e.register(t);var a=e.util.clone(e.languages.typescript);e.languages.tsx=e.languages.extend("jsx",a)}e.exports=r,r.displayName="tsx",r.aliases=[]}}]);
+//# sourceMappingURL=react-syntax-highlighter_languages_refractor_tsx-1a4e3d9ad39728042164.js.map
